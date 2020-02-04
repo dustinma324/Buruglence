@@ -18,7 +18,7 @@ nt = numel(t);
 nx = numel(x);
 L = 2*pi();
 tavg_start = 1001;
-step = 100;
+step = 10;
 
 %% Mean across time
 meanUt = mean(u,1);
@@ -60,7 +60,7 @@ n = length(x); %Nx
 
 pwr = [];
 meanU = mean(u(:,tavg_start:end),2);
-for i = tavg_start:1:nt
+for i = tavg_start:step:nt
     U_fft = fft(u(:,i)-meanU,n)/n;
     pwr = [pwr U_fft.*conj(U_fft)]; % Convolution of fft function with the autocorrelation
 end
